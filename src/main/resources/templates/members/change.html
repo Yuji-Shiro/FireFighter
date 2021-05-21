@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メンバー詳細変更</title>
+</head>
+<body>
+
+     <h2>メンバー詳細変更(change)</h2>
+     
+     <form th:method="post" th:object="${members}" th:action="@{/members/change/id={id}(id=*{id})}">
+        <label>ID:<input type="text" th:field="*{id}"></label><br>
+        <label>名前:<input type="text" th:field="*{name}"></label><br>
+        <label>役職:<input type="text" th:field="*{role}"></label><br>
+        <label>年齢:<input type="text" th:field="*{age}"></label><br>
+        <button>変更</button>
+      </form>
+      
+</body>
+</html>

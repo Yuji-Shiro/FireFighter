@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+     <meta charset="UTF-8">
+     <title>メンバー一覧</title>
+</head>
+<body>
+     <h2>メンバー一覧(top)</h2>
+     <div th:if="!${members.size()}">
+          <p>登録されているメンバーはいません</p>
+     </div>
+     
+     <a th:href="@{/members/new}" >
+          <button>新しいメンバーを登録</button>
+     </a>
+     
+     <table th:if="${members.size()}" border=1>
+          <thead>
+               <tr>
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>役職</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+               </tr>
+          </thead>
+          
+          <tbody>
+               <tr th:each="members:${members}" th:object="${members}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{role}"></td>
+                    <td> <a th:href="@{members/details/id={id}(id=*{id})}"><button>詳細</button></a></td>
+                    <td> <a th:href="@{members/change/id={id}(id=*{id})}"><button>変更</button></a></td>
+                    <td> <form th:method="post" th:action="@{/members/delete/id={id}(id=*{id})}"><button>削除</button></form></td>
+               </tr>
+          </tbody>
+     </table>   
+</body>
+</html>

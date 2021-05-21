@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規メンバー登録</title>
+</head>
+<body>
+
+     <h2>新規メンバー登録</h2>
+     
+     <form th:method="post" th:object="${members}" th:action="@{/members/new}">
+          <label>ID:<input type="text" th:field="*{id}"></label>
+          <label>名前:<input type="text" th:field="*{name}"></label>
+          <label>役職:<input type="text" th:field="*{role}"></label>
+          <label>年齢:<input type="text" th:field="*{age}"></label>
+          <button>新規作成</button>
+     </form>
+     
+</body>
+</html>
